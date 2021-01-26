@@ -21,7 +21,7 @@ Samozdřejmě nestačí jen zkopírovat proto sleduj video!
 
 ### Návod
 1. Stákni si VSC link: [https://code.visualstudio.com/Download]
-### Installation
+
 
 2. Stáhni si Node.Js link: https://nodejs.org/en/
 
