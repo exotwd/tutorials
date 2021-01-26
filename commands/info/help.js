@@ -3,9 +3,9 @@ const { readdirSync } = require("fs");
 const prefix = require("../../config.json").prefix;
 
 module.exports = {
-  name: "help",
+  name: "help", \\jméno příkazu
   aliases : ['h'],
-  description: "Shows all available bot commands.",
+  description: "Ukáže dostupné příkazy.",
   run: async (client, message, args) => {
 
 
