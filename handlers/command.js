@@ -11,7 +11,7 @@ module.exports= (client) => {
                 client.commands.set(pull.name, pull);
                 table.addRow(file,'✅')
             } else {
-                table.addRow(file, '❌ -> Missing a help.name, or help.name is not a string.')
+                table.addRow(file, '❌ -> Cybi help jmeno nebo neni promenna typu string.')
                 continue;
             }if(pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name))
         }
