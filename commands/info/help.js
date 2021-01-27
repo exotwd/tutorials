@@ -3,13 +3,13 @@ const { readdirSync } = require("fs");
 const prefix = require("../../config.json").prefix;
 
 module.exports = {
-  name: "help", \\jméno příkazu
-  aliases : ['h'],
-  description: "Ukáže dostupné příkazy.",
+  name: "help", //jméno příkazu
+  aliases : ['h'], //další možnosti příkazu
+  description: "Ukáže dostupné příkazy.", //popis příkazu
   run: async (client, message, args) => {
 
 
-    const roleColor =
+    const roleColor = 
       message.guild.me.displayHexColor === "#000000"
         ? "#ffffff"
         : message.guild.me.displayHexColor;
@@ -17,19 +17,19 @@ module.exports = {
     if (!args[0]) {
       let categories = [];
 
-      readdirSync("./commands/").forEach((dir) => {
-        const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
-          file.endsWith(".js")
+      readdirSync("./commands/").forEach((dir) => { //v adresáři commands pro každou složku typu příkazů
+        const commands = readdirSync(`./commands/${dir}/`).filter((file) =>  //filtruje soubor
+          file.endsWith(".js") //pokud soubor končí s .js 
         );
 
-        const cmds = commands.map((command) => {
+        const cmds = commands.map((command) => { 
           let file = require(`../../commands/${dir}/${command}`);
 
-          if (!file.name) return "No command name.";
+          if (!file.name) return "Není uvedeno jméno příkazu."; //pokud není napsáno jméno příkazu vypíše error
 
-          let name = file.name.replace(".js", "");
+          let name = file.name.replace(".js", ""); //vymaže .js
 
-          return `\`${name}\``;
+          return `\`${name}\``;  //do help napíše jméno bez .js
         });
 
         let data = new Object();
@@ -42,18 +42,18 @@ module.exports = {
         categories.push(data);
       });
 
-      const embed = new MessageEmbed()
-        .setTitle("📬 Need help? Here are all of my commands:")
-        .addFields(categories)
-        .setDescription(
-          `Use \`${prefix}help\` followed by a command name to get more additional information on a command. For example: \`${prefix}help ban\`.`
+      const embed = new MessageEmbed() //Embed help zprávy
+        .setTitle("📬 Need help? Here are all of my commands:") //Nadpis 
+        .addFields(categories) //Kategorie
+        .setDescription( 
+          `Použij\`${prefix}help\` pro informace o konkrétím příkazu. Například: \`${prefix}help ban\`.`
         )
-        .setFooter(
-          `Requested by ${message.author.tag}`,
-          message.author.displayAvatarURL({ dynamic: true })
+        .setFooter( 
+          `${message.author.tag}`,  //kdo příkaz použil
+          message.author.displayAvatarURL({ dynamic: true }) //avatar toho kdo použil příkaz
         )
-        .setTimestamp()
-        .setColor(roleColor);
+        .setTimestamp() //čas kdy bylo odesláno
+        .setColor(roleColor); //barva
       return message.channel.send(embed);
     } else {
       const command =
@@ -62,25 +62,25 @@ module.exports = {
           (c) => c.aliases && c.aliases.includes(args[0].toLowerCase())
         );
 
-      if (!command) {
-        const embed = new MessageEmbed()
-          .setTitle(`Invalid command! Use \`${prefix}help\` for all of my commands!`)
-          .setColor("FF0000");
-        return message.channel.send(embed);
+      if (!command) { //pokud takový příkaz nebyl nalezen
+        const embed = new MessageEmbed() //embed
+          .setTitle(`neznámý příkaz! Use \`${prefix}help\` pro všechny příkazy!`) //error zpráva
+          .setColor("FF0000"); //barva
+        return message.channel.send(embed); //odešle
       }
 
-      const embed = new MessageEmbed()
-        .setTitle("Command Details:")
-        .addField("PREFIX:", `\`${prefix}\``)
-        .addField(
-          "COMMAND:",
-          command.name ? `\`${command.name}\`` : "No name for this command."
+      const embed = new MessageEmbed() //nový embed
+        .setTitle("Detaily O příkazu:") //Nadpis
+        .addField("PREFIX:", `\`${prefix}\``) //prefix bota
+        .addField( 
+          "Příkaz:",
+          command.name ? `\`${command.name}\`` : "-."
         )
-        .addField(
-          "ALIASES:",
+        .addField( 
+          "ALIASY:", //aliasy
           command.aliases
             ? `\`${command.aliases.join("` `")}\``
-            : "No aliases for this command."
+            : "Žádné aliasy." 
         )
         .addField(
           "USAGE:",
@@ -88,19 +88,19 @@ module.exports = {
             ? `\`${prefix}${command.name} ${command.usage}\``
             : `\`${prefix}${command.name}\``
         )
-        .addField(
-          "DESCRIPTION:",
+        .addField( //popis příkazu
+          "POPIS:",
           command.description
             ? command.description
             : "No description for this command."
         )
-        .setFooter(
-          `Requested by ${message.author.tag}`,
-          message.author.displayAvatarURL({ dynamic: true })
+        .setFooter( 
+          `${message.author.tag}`, //Kdo použil příkaz
+          message.author.displayAvatarURL({ dynamic: true }) 
         )
-        .setTimestamp()
-        .setColor(roleColor);
-      return message.channel.send(embed);
+        .setTimestamp() //datum
+        .setColor(roleColor); //barva
+      return message.channel.send(embed); //poslat
     }
   },
 };
