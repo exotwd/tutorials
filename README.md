@@ -20,7 +20,7 @@ Samozdřejmě nestačí jen zkopírovat proto sleduj video!
 
 
 ### Návod
-1. Stákni si VSC link: [https://code.visualstudio.com/Download]
+1. Stáhni si VSC link: [https://code.visualstudio.com/Download](Tady klikni!)
 
 
 2. Stáhni si Node.Js link: https://nodejs.org/en/
@@ -50,6 +50,6 @@ Samozdřejmě nestačí jen zkopírovat proto sleduj video!
    node . 
    ```
    
-   Bot by měl být onlineuž ho stačí jen pozvat na servery kde má být!
+   Bot by měl být online už ho stačí jen pozvat na servery kde má být!
    
    (jak na to se dozvíš ve videu!)
