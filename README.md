@@ -20,7 +20,7 @@ Samozdřejmě nestačí jen zkopírovat proto sleduj video!
 
 
 ### Návod
-1. Stáhni si VSC link: [https://code.visualstudio.com/Download](Tady klikni!)
+1. Stáhni si VSC link: https://code.visualstudio.com/Download
 
 
 2. Stáhni si Node.Js link: https://nodejs.org/en/
