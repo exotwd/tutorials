@@ -52,4 +52,4 @@ Samozdřejmě nestačí jen zkopírovat proto sleduj video!
    
    Bot by měl být online už ho stačí jen pozvat na servery kde má být!
 
-Credit to: https://www.youtube.com/c/reconlxx/videos [Odkaz Do Neznáma]
+Credit to: https://www.youtube.com/c/reconlxx/videos
