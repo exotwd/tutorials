@@ -51,5 +51,5 @@ Samozdřejmě nestačí jen zkopírovat proto sleduj video!
    ```
    
    Bot by měl být online už ho stačí jen pozvat na servery kde má být!
-   
-   (jak na to se dozvíš ve videu!)
+
+Credit to: [https://www.youtube.com/c/reconlxx/videos] Odkaz Do Neznáma
